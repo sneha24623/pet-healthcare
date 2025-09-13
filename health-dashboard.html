@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Health Dashboard - Pet Healthcare Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>📊 Pet Health Dashboard</h2>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Features ▼</button>
+                    <div class="dropdown-content">
+                        <a href="adoption.html">🐕 Adoption</a>
+                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="#diet">🍖 Diet Planner</a>
+                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                    </div>
+                </div>
+                <button class="btn-nav" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="health-main">
+        <div class="health-container">
+            <div class="health-header">
+                <h1 class="health-title">📊 Pet Health Dashboard</h1>
+                <p class="health-subtitle">Comprehensive health monitoring and medical records for your beloved pets</p>
+            </div>
+
+            <!-- Pet Selection Tabs -->
+            <div class="pet-tabs">
+                <button class="pet-tab-btn active" onclick="showPetProfile('buddy')">🐕 Buddy</button>
+                <button class="pet-tab-btn" onclick="showPetProfile('luna')">🐱 Luna</button>
+                <button class="pet-tab-btn" onclick="showPetProfile('max')">🐕 Max</button>
+            </div>
+
+            <!-- Buddy's Profile -->
+            <div id="buddy" class="pet-profile active">
+                <div class="pet-profile-card">
+                    <!-- Pet Header Section -->
+                    <div class="pet-header-section">
+                        <div class="pet-image-container">
+                            <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Buddy" class="pet-profile-image">
+                            <div class="health-status excellent">Excellent Health</div>
+                        </div>
+                        
+                        <div class="pet-basic-info">
+                            <h2 class="pet-profile-name">🐕 Buddy</h2>
+                            <div class="pet-info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">🎂</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Age</span>
+                                        <span class="info-value">2 years</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">⚖️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Weight</span>
+                                        <span class="info-value">28 kg</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">🐕</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Breed</span>
+                                        <span class="info-value">Golden Retriever</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">♂️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Gender</span>
+                                        <span class="info-value">Male</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Metrics -->
+                    <div class="health-metrics">
+                        <h3 class="section-title">📈 Health Metrics</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">❤️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">98%</span>
+                                    <span class="metric-label">Overall Health</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">🌡️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">38.5°C</span>
+                                    <span class="metric-label">Body Temperature</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">💓</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">85 BPM</span>
+                                    <span class="metric-label">Heart Rate</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">🏃</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">Active</span>
+                                    <span class="metric-label">Activity Level</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vaccination Reports -->
+                    <div class="vaccination-section">
+                        <h3 class="section-title">💉 Vaccination Reports</h3>
+                        <div class="vaccination-grid">
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>Rabies Vaccination</h4>
+                                        <span class="vaccine-date">Last: March 15, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> March 15, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Sarah Johnson</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>DHPP (Distemper, Hepatitis, Parvovirus, Parainfluenza)</h4>
+                                        <span class="vaccine-date">Last: February 20, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> February 20, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Sarah Johnson</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>Bordetella (Kennel Cough)</h4>
+                                        <span class="vaccine-date">Last: January 10, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> January 10, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Sarah Johnson</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Check-up Schedule -->
+                    <div class="checkup-section">
+                        <h3 class="section-title">📅 Check-up Schedule</h3>
+                        <div class="checkup-grid">
+                            <div class="checkup-card annual">
+                                <div class="checkup-icon">📋</div>
+                                <div class="checkup-info">
+                                    <h4>Annual Check-up</h4>
+                                    <p><strong>Last Visit:</strong> March 1, 2024</p>
+                                    <p><strong>Next Due:</strong> March 1, 2025</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Up to Date</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card monthly">
+                                <div class="checkup-icon">🩺</div>
+                                <div class="checkup-info">
+                                    <h4>Monthly Health Check</h4>
+                                    <p><strong>Last Visit:</strong> March 15, 2024</p>
+                                    <p><strong>Next Due:</strong> April 15, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge upcoming">Due Soon</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card dental">
+                                <div class="checkup-icon">🦷</div>
+                                <div class="checkup-info">
+                                    <h4>Dental Check-up</h4>
+                                    <p><strong>Last Visit:</strong> December 10, 2023</p>
+                                    <p><strong>Next Due:</strong> June 10, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge upcoming">Scheduled</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn edit-btn" onclick="editPetProfile('buddy')">
+                            ✏️ Edit Pet Profile
+                        </button>
+                        <button class="action-btn download-btn" onclick="downloadHealthReport('buddy')">
+                            📥 Download Health Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Luna's Profile -->
+            <div id="luna" class="pet-profile">
+                <div class="pet-profile-card">
+                    <!-- Pet Header Section -->
+                    <div class="pet-header-section">
+                        <div class="pet-image-container">
+                            <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Luna" class="pet-profile-image">
+                            <div class="health-status excellent">Perfect Health</div>
+                        </div>
+                        
+                        <div class="pet-basic-info">
+                            <h2 class="pet-profile-name">🐱 Luna</h2>
+                            <div class="pet-info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">🎂</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Age</span>
+                                        <span class="info-value">1.5 years</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">⚖️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Weight</span>
+                                        <span class="info-value">4.2 kg</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">🐱</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Breed</span>
+                                        <span class="info-value">Persian Cat</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">♀️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Gender</span>
+                                        <span class="info-value">Female</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Metrics -->
+                    <div class="health-metrics">
+                        <h3 class="section-title">📈 Health Metrics</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">❤️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">100%</span>
+                                    <span class="metric-label">Overall Health</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">🌡️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">38.8°C</span>
+                                    <span class="metric-label">Body Temperature</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">💓</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">180 BPM</span>
+                                    <span class="metric-label">Heart Rate</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">😴</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">Calm</span>
+                                    <span class="metric-label">Activity Level</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vaccination Reports -->
+                    <div class="vaccination-section">
+                        <h3 class="section-title">💉 Vaccination Reports</h3>
+                        <div class="vaccination-grid">
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>FVRCP (Feline Viral Rhinotracheitis, Calicivirus, Panleukopenia)</h4>
+                                        <span class="vaccine-date">Last: February 28, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> February 28, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Michael Chen</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>Rabies Vaccination</h4>
+                                        <span class="vaccine-date">Last: January 15, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> January 15, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Michael Chen</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>FeLV (Feline Leukemia Virus)</h4>
+                                        <span class="vaccine-date">Last: March 5, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> March 5, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Michael Chen</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Check-up Schedule -->
+                    <div class="checkup-section">
+                        <h3 class="section-title">📅 Check-up Schedule</h3>
+                        <div class="checkup-grid">
+                            <div class="checkup-card annual">
+                                <div class="checkup-icon">📋</div>
+                                <div class="checkup-info">
+                                    <h4>Annual Check-up</h4>
+                                    <p><strong>Last Visit:</strong> February 15, 2024</p>
+                                    <p><strong>Next Due:</strong> February 15, 2025</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Up to Date</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card monthly">
+                                <div class="checkup-icon">🩺</div>
+                                <div class="checkup-info">
+                                    <h4>Monthly Health Check</h4>
+                                    <p><strong>Last Visit:</strong> March 10, 2024</p>
+                                    <p><strong>Next Due:</strong> April 10, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge upcoming">Due Soon</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card grooming">
+                                <div class="checkup-icon">✂️</div>
+                                <div class="checkup-info">
+                                    <h4>Grooming Session</h4>
+                                    <p><strong>Last Visit:</strong> March 1, 2024</p>
+                                    <p><strong>Next Due:</strong> April 1, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge upcoming">Scheduled</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn edit-btn" onclick="editPetProfile('luna')">
+                            ✏️ Edit Pet Profile
+                        </button>
+                        <button class="action-btn download-btn" onclick="downloadHealthReport('luna')">
+                            📥 Download Health Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Max's Profile -->
+            <div id="max" class="pet-profile">
+                <div class="pet-profile-card">
+                    <!-- Pet Header Section -->
+                    <div class="pet-header-section">
+                        <div class="pet-image-container">
+                            <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Max" class="pet-profile-image">
+                            <div class="health-status good">Good Health</div>
+                        </div>
+                        
+                        <div class="pet-basic-info">
+                            <h2 class="pet-profile-name">🐕 Max</h2>
+                            <div class="pet-info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">🎂</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Age</span>
+                                        <span class="info-value">3 years</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">⚖️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Weight</span>
+                                        <span class="info-value">32 kg</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">🐕</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Breed</span>
+                                        <span class="info-value">Labrador Mix</span>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-icon">♂️</div>
+                                    <div class="info-content">
+                                        <span class="info-label">Gender</span>
+                                        <span class="info-value">Male</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Metrics -->
+                    <div class="health-metrics">
+                        <h3 class="section-title">📈 Health Metrics</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">❤️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">92%</span>
+                                    <span class="metric-label">Overall Health</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">🌡️</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">38.7°C</span>
+                                    <span class="metric-label">Body Temperature</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">💓</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">90 BPM</span>
+                                    <span class="metric-label">Heart Rate</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">🏃</div>
+                                <div class="metric-info">
+                                    <span class="metric-value">Moderate</span>
+                                    <span class="metric-label">Activity Level</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vaccination Reports -->
+                    <div class="vaccination-section">
+                        <h3 class="section-title">💉 Vaccination Reports</h3>
+                        <div class="vaccination-grid">
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>Rabies Vaccination</h4>
+                                        <span class="vaccine-date">Last: March 20, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> March 20, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Emily Rodriguez</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card completed">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">✅</div>
+                                    <div class="vaccine-info">
+                                        <h4>DHPP (Distemper, Hepatitis, Parvovirus, Parainfluenza)</h4>
+                                        <span class="vaccine-date">Last: February 25, 2024</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> February 25, 2025</p>
+                                    <p><strong>Vet:</strong> Dr. Emily Rodriguez</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Current</span></p>
+                                </div>
+                            </div>
+
+                            <div class="vaccine-card pending">
+                                <div class="vaccine-header">
+                                    <div class="vaccine-icon">⏳</div>
+                                    <div class="vaccine-info">
+                                        <h4>Bordetella (Kennel Cough)</h4>
+                                        <span class="vaccine-date">Last: March 15, 2023</span>
+                                    </div>
+                                </div>
+                                <div class="vaccine-details">
+                                    <p><strong>Next Due:</strong> March 15, 2024</p>
+                                    <p><strong>Vet:</strong> Dr. Emily Rodriguez</p>
+                                    <p><strong>Status:</strong> <span class="status-badge overdue">Overdue</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Check-up Schedule -->
+                    <div class="checkup-section">
+                        <h3 class="section-title">📅 Check-up Schedule</h3>
+                        <div class="checkup-grid">
+                            <div class="checkup-card annual">
+                                <div class="checkup-icon">📋</div>
+                                <div class="checkup-info">
+                                    <h4>Annual Check-up</h4>
+                                    <p><strong>Last Visit:</strong> January 20, 2024</p>
+                                    <p><strong>Next Due:</strong> January 20, 2025</p>
+                                    <p><strong>Status:</strong> <span class="status-badge current">Up to Date</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card monthly">
+                                <div class="checkup-icon">🩺</div>
+                                <div class="checkup-info">
+                                    <h4>Monthly Health Check</h4>
+                                    <p><strong>Last Visit:</strong> February 20, 2024</p>
+                                    <p><strong>Next Due:</strong> March 20, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge overdue">Overdue</span></p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-card surgery">
+                                <div class="checkup-icon">🏥</div>
+                                <div class="checkup-info">
+                                    <h4>Post-Surgery Follow-up</h4>
+                                    <p><strong>Last Visit:</strong> March 10, 2024</p>
+                                    <p><strong>Next Due:</strong> April 10, 2024</p>
+                                    <p><strong>Status:</strong> <span class="status-badge upcoming">Scheduled</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="action-btn edit-btn" onclick="editPetProfile('max')">
+                            ✏️ Edit Pet Profile
+                        </button>
+                        <button class="action-btn download-btn" onclick="downloadHealthReport('max')">
+                            📥 Download Health Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Pet Modal -->
+    <div id="editPetModal" class="modal">
+        <div class="modal-content edit-modal">
+            <div class="modal-header">
+                <h2>✏️ Edit Pet Profile</h2>
+                <span class="close" onclick="closeEditModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editPetForm" class="edit-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editPetName">Pet Name</label>
+                            <input type="text" id="editPetName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPetAge">Age</label>
+                            <input type="text" id="editPetAge" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editPetWeight">Weight</label>
+                            <input type="text" id="editPetWeight" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPetBreed">Breed</label>
+                            <input type="text" id="editPetBreed" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editHealthStatus">Health Status</label>
+                        <select id="editHealthStatus" required>
+                            <option value="excellent">Excellent Health</option>
+                            <option value="good">Good Health</option>
+                            <option value="fair">Fair Health</option>
+                            <option value="poor">Needs Attention</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editNotes">Additional Notes</label>
+                        <textarea id="editNotes" rows="3" placeholder="Any additional health notes or observations..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="modal-btn save-btn">💾 Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

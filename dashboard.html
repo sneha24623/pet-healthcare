@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Healthcare Management System - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🐾 Pet Healthcare Dashboard</h2>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Features ▼</button>
+                    <div class="dropdown-content">
+                        <a href="adoption.html">🐕 Adoption</a>
+                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="#diet">🍖 Diet Planner</a>
+                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                    </div>
+                </div>
+                <button class="btn-nav" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <div class="welcome-section">
+                <h1 class="dashboard-title">Welcome <span id="userName">User</span>! 🐾</h1>
+                <p class="dashboard-subtitle">Manage your furry friends' health and happiness</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-icon">🐕</div>
+                    <h3>My Pets</h3>
+                    <p>Manage your pet profiles and information</p>
+                    <div class="card-stats">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Registered Pets</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='health-dashboard.html'">View Pets</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">🏥</div>
+                    <h3>Appointments</h3>
+                    <p>Schedule and track veterinary visits</p>
+                    <div class="card-stats">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Upcoming</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='vet-appointment.html'">Book Now</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">💊</div>
+                    <h3>Health Records</h3>
+                    <p>Complete health history including appointments and vaccinations</p>
+                    <div class="card-stats">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Health Records</span>
+                    </div>
+                    <button class="card-btn" onclick="showHealthRecords()">View Records</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">🍖</div>
+                    <h3>Diet Planner</h3>
+                    <p>Customize nutrition plans for your pets</p>
+                    <div class="card-stats">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Meal Plans</span>
+                    </div>
+                    <button class="card-btn" onclick="showDietPlanner()">Plan Diet</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Adoption Center</h3>
+                    <p>Find new furry family members or list pets for adoption</p>
+                    <div class="card-stats">
+                        <span class="stat-number">25</span>
+                        <span class="stat-label">Available Pets</span>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='adoption.html'">Browse Pets</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon">🍖</div>
+                    <h3>Diet Planner</h3>
+                    <p>Personalized nutrition plans and meal schedules for your pets</p>
+                    <div class="card-stats">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Diet Plans</span>
+                    </div>
+                    <button class="card-btn" onclick="showDietPlanner()">Plan Diet</button>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-buttons">
+                    <button class="action-btn emergency" onclick="showEmergencyContact()">🚨 Emergency Contact</button>
+                    <button class="action-btn reminder" onclick="showSetReminder()">⏰ Set Reminder</button>
+                    <button class="action-btn add-pet" onclick="showAddNewPet()">➕ Add New Pet</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Emergency Contact Modal -->
+    <div id="emergencyContactModal" class="modal">
+        <div class="modal-content emergency-modal">
+            <div class="modal-header emergency-modal-header">
+                <h2>🚨 Emergency Contact Information</h2>
+                <span class="close" onclick="closeEmergencyContactModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="emergency-grid">
+                    <div class="emergency-card helpline-info">
+                        <h3>📞 Emergency Helplines</h3>
+                        <div class="helpline-list">
+                            <div class="helpline-item">
+                                <span class="helpline-icon">🏥</span>
+                                <div>
+                                    <strong>24/7 Pet Emergency:</strong>
+                                    <span class="helpline-number">1-800-PET-HELP</span>
+                                </div>
+                            </div>
+                            <div class="helpline-item">
+                                <span class="helpline-icon">☠️</span>
+                                <div>
+                                    <strong>Poison Control:</strong>
+                                    <span class="helpline-number">1-888-426-4435</span>
+                                </div>
+                            </div>
+                            <div class="helpline-item">
+                                <span class="helpline-icon">🚑</span>
+                                <div>
+                                    <strong>Animal Ambulance:</strong>
+                                    <span class="helpline-number">1-800-VET-RIDE</span>
+                                </div>
+                            </div>
+                            <div class="helpline-item">
+                                <span class="helpline-icon">🏥</span>
+                                <div>
+                                    <strong>Nearest Emergency Clinic:</strong>
+                                    <span class="helpline-number">+1 (555) 911-PETS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="emergency-card owner-info">
+                        <h3>👤 Your Emergency Contacts</h3>
+                        <div class="emergency-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">👤</span>
+                                <div>
+                                    <strong>Primary Contact:</strong>
+                                    <span>John Smith</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📞</span>
+                                <div>
+                                    <strong>Phone:</strong>
+                                    <span>+1 (555) 123-4567</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📱</span>
+                                <div>
+                                    <strong>Emergency Contact:</strong>
+                                    <span>+1 (555) 987-6543</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🏥</span>
+                                <div>
+                                    <strong>Primary Vet:</strong>
+                                    <span>Dr. Sarah Johnson</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sos-section">
+                    <button class="sos-btn" onclick="triggerSOS()">
+                        <span class="sos-icon">🚨</span>
+                        <span class="sos-text">SOS EMERGENCY</span>
+                        <span class="sos-subtext">Tap for Urgent Help</span>
+                    </button>
+                    <p class="sos-description">
+                        Press the SOS button in case of a life-threatening emergency. 
+                        This will immediately connect you to emergency services and notify your registered contacts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Set Reminder Modal -->
+    <div id="setReminderModal" class="modal">
+        <div class="modal-content reminder-modal">
+            <div class="modal-header">
+                <h2>⏰ Set Pet Care Reminder</h2>
+                <span class="close" onclick="closeSetReminderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reminderForm" class="reminder-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reminderPet">Select Pet</label>
+                            <select id="reminderPet" required>
+                                <option value="">Choose your pet</option>
+                                <option value="buddy">🐕 Buddy - Golden Retriever</option>
+                                <option value="luna">🐱 Luna - Persian Cat</option>
+                                <option value="max">🐕 Max - Labrador Mix</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reminderType">Reminder Type</label>
+                            <select id="reminderType" required>
+                                <option value="">Select reminder type</option>
+                                <option value="medication">💊 Medication/Pills</option>
+                                <option value="vaccination">💉 Vaccination</option>
+                                <option value="feeding">🍖 Feeding Time</option>
+                                <option value="grooming">✂️ Grooming</option>
+                                <option value="exercise">🏃 Exercise</option>
+                                <option value="checkup">🏥 Vet Checkup</option>
+                                <option value="other">📝 Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reminderDate">Date</label>
+                            <input type="date" id="reminderDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reminderTime">Time</label>
+                            <input type="time" id="reminderTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reminderTitle">Reminder Title</label>
+                        <input type="text" id="reminderTitle" placeholder="e.g., Give Buddy his heart medication" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reminderNotes">Additional Notes</label>
+                        <textarea id="reminderNotes" rows="3" placeholder="Any special instructions or notes..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reminderFrequency">Frequency</label>
+                        <select id="reminderFrequency" required>
+                            <option value="once">One-time reminder</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="modal-btn reminder-btn">⏰ Set Reminder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Pet Modal -->
+    <div id="addNewPetModal" class="modal">
+        <div class="modal-content add-pet-modal">
+            <div class="modal-header">
+                <h2>➕ Add New Pet</h2>
+                <span class="close" onclick="closeAddNewPetModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="addPetForm" class="add-pet-form">
+                    <div class="form-section">
+                        <h3>🐾 Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPetName">Pet Name</label>
+                                <input type="text" id="newPetName" placeholder="Enter your pet's name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPetType">Pet Type</label>
+                                <select id="newPetType" required>
+                                    <option value="">Select pet type</option>
+                                    <option value="dog">🐕 Dog</option>
+                                    <option value="cat">🐱 Cat</option>
+                                    <option value="bird">🐦 Bird</option>
+                                    <option value="rabbit">🐰 Rabbit</option>
+                                    <option value="hamster">🐹 Hamster</option>
+                                    <option value="fish">🐠 Fish</option>
+                                    <option value="other">🐾 Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPetBreed">Breed</label>
+                                <input type="text" id="newPetBreed" placeholder="e.g., Golden Retriever, Persian Cat" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPetGender">Gender</label>
+                                <select id="newPetGender" required>
+                                    <option value="">Select gender</option>
+                                    <option value="male">♂️ Male</option>
+                                    <option value="female">♀️ Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPetAge">Age</label>
+                                <input type="text" id="newPetAge" placeholder="e.g., 2 years, 6 months" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPetWeight">Weight</label>
+                                <input type="text" id="newPetWeight" placeholder="e.g., 25 kg, 4.5 lbs" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🏥 Health Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPetHealthStatus">Health Status</label>
+                                <select id="newPetHealthStatus" required>
+                                    <option value="">Select health status</option>
+                                    <option value="excellent">Excellent</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="needs-attention">Needs Attention</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPetVet">Primary Veterinarian</label>
+                                <input type="text" id="newPetVet" placeholder="e.g., Dr. Sarah Johnson">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPetAllergies">Known Allergies</label>
+                            <input type="text" id="newPetAllergies" placeholder="e.g., Chicken protein, Flea medication">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPetMedications">Current Medications</label>
+                            <textarea id="newPetMedications" rows="2" placeholder="List any current medications..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>📞 Emergency Contact</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="newPetEmergencyContact">Emergency Contact Name</label>
+                                <input type="text" id="newPetEmergencyContact" placeholder="Emergency contact person">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPetEmergencyPhone">Emergency Phone</label>
+                                <input type="tel" id="newPetEmergencyPhone" placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPetNotes">Additional Notes</label>
+                        <textarea id="newPetNotes" rows="3" placeholder="Any additional information about your pet..."></textarea>
+                    </div>
+
+                    <button type="submit" class="modal-btn add-pet-btn">➕ Add Pet to Family</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reminder Success Modal -->
+    <div id="reminderSuccessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✅ Reminder Set Successfully!</h2>
+                <span class="close" onclick="closeReminderSuccessModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="checkmark">⏰</div>
+                </div>
+                <h3 id="reminderSuccessDetails">Reminder Details</h3>
+                <p class="modal-message">
+                    Your reminder has been set successfully! 📅
+                </p>
+                <p class="modal-submessage">
+                    You will receive notifications via email and push notifications when it's time.
+                </p>
+                <div class="modal-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span>Email notification enabled</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📱</span>
+                        <span>Push notification enabled</span>
+                    </div>
+                </div>
+                <button class="modal-btn" onclick="closeReminderSuccessModal()">
+                    Perfect! 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Pet Success Modal -->
+    <div id="addPetSuccessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎉 Pet Added Successfully!</h2>
+                <span class="close" onclick="closeAddPetSuccessModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="checkmark">🐾</div>
+                </div>
+                <h3 id="addPetSuccessDetails">Welcome to the Family!</h3>
+                <p class="modal-message">
+                    Your new pet has been added to your healthcare dashboard! 🏠
+                </p>
+                <p class="modal-submessage">
+                    You can now schedule appointments, set reminders, and track their health progress.
+                </p>
+                <div class="modal-info">
+                    <div class="info-item">
+                        <span class="info-icon">📊</span>
+                        <span>Health dashboard updated</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span>Ready for appointments</span>
+                    </div>
+                </div>
+                <button class="modal-btn" onclick="closeAddPetSuccessModal()">
+                    Awesome! 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOS Emergency Modal -->
+    <div id="sosModal" class="modal">
+        <div class="modal-content emergency-modal">
+            <div class="modal-header emergency-modal-header">
+                <h2>🚨 EMERGENCY ACTIVATED</h2>
+            </div>
+            <div class="modal-body">
+                <div class="emergency-animation">
+                    <div class="emergency-pulse">🚨</div>
+                </div>
+                <h3>Emergency Services Contacted</h3>
+                <p class="modal-message emergency-message">
+                    🚑 Emergency services have been notified!
+                </p>
+                <p class="modal-submessage">
+                    • Emergency veterinary services contacted<br>
+                    • Your emergency contacts have been notified<br>
+                    • Location shared with emergency responders
+                </p>
+                <div class="emergency-countdown">
+                    <span>Help is on the way...</span>
+                    <div class="countdown-timer" id="countdownTimer">Connecting...</div>
+                </div>
+                <button class="modal-btn emergency-btn" onclick="closeSosModal()">
+                    I'm Safe Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diet Planner Modal -->
+    <div id="dietPlannerModal" class="modal">
+        <div class="modal-content diet-modal">
+            <div class="modal-header">
+                <h2>🍖 Pet Diet Planner</h2>
+                <span class="close" onclick="closeDietPlannerModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="dietPlannerForm" class="diet-form">
+                    <div class="form-section">
+                        <h3>🐾 Pet Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dietPetName">Pet Name</label>
+                                <input type="text" id="dietPetName" placeholder="Enter your pet's name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dietPetAge">Age</label>
+                                <input type="text" id="dietPetAge" placeholder="e.g., 2 years, 6 months" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dietPetBreed">Breed</label>
+                                <input type="text" id="dietPetBreed" placeholder="e.g., Golden Retriever, Persian Cat" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dietPetCondition">Health Condition</label>
+                                <select id="dietPetCondition" required>
+                                    <option value="">Select condition</option>
+                                    <option value="healthy">Healthy</option>
+                                    <option value="overweight">Overweight</option>
+                                    <option value="underweight">Underweight</option>
+                                    <option value="allergies">Food Allergies</option>
+                                    <option value="diabetes">Diabetes</option>
+                                    <option value="kidney disease">Kidney Disease</option>
+                                    <option value="senior">Senior Pet</option>
+                                    <option value="puppy/kitten">Puppy/Kitten</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="generate-diet-btn" onclick="generateDietPlan()">
+                            🍖 Generate Personalized Diet Plan
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="dietResults" class="diet-results"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

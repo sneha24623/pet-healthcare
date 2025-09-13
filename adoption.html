@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption - Pet Healthcare Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🐾 Pet Adoption Center</h2>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Features ▼</button>
+                    <div class="dropdown-content">
+                        <a href="adoption.html">🐕 Adoption</a>
+                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="#diet">🍖 Diet Planner</a>
+                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                    </div>
+                </div>
+                <button class="btn-nav" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="adoption-main">
+        <div class="adoption-container">
+            <div class="adoption-header">
+                <h1 class="adoption-title">Find Your Perfect Companion 🐾</h1>
+                <p class="adoption-subtitle">Give a loving home to these adorable pets waiting for their forever family</p>
+            </div>
+
+            <div class="pets-grid">
+                <!-- Pet 1 - Golden Retriever -->
+                <div class="pet-card">
+                    <div class="pet-image">
+                        <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Golden Retriever">
+                        <div class="pet-status available">Available</div>
+                    </div>
+                    
+                    <div class="pet-info">
+                        <h3 class="pet-name">Buddy 🐕</h3>
+                        
+                        <div class="info-section">
+                            <h4>🐾 Pet Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Breed:</span>
+                                    <span class="info-value">Golden Retriever</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Gender:</span>
+                                    <span class="info-value">Male</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Age:</span>
+                                    <span class="info-value">2 years</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Weight:</span>
+                                    <span class="info-value">28 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>👤 Owner Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Previous Owner:</span>
+                                    <span class="info-value">Sarah Johnson</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Reason:</span>
+                                    <span class="info-value">Moving abroad</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📞 Contact</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Shelter:</span>
+                                    <span class="info-value">Happy Paws Rescue</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Phone:</span>
+                                    <span class="info-value">+1 (555) 123-4567</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📍 Location</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">City:</span>
+                                    <span class="info-value">San Francisco, CA</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Distance:</span>
+                                    <span class="info-value">5.2 miles away</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>💉 Vaccination Report</h4>
+                            <div class="vaccination-status">
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>Rabies (2024)</span>
+                                </div>
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>DHPP (2024)</span>
+                                </div>
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>Bordetella (2024)</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <span class="vaccine-icon">🩺</span>
+                                    <span>Health Check: Excellent</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="more-info-btn" onclick="showContactModal('Buddy', 'Golden Retriever')">
+                            💌 More Info & Contact
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pet 2 - Persian Cat -->
+                <div class="pet-card">
+                    <div class="pet-image">
+                        <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Persian Cat">
+                        <div class="pet-status available">Available</div>
+                    </div>
+                    
+                    <div class="pet-info">
+                        <h3 class="pet-name">Luna 🐱</h3>
+                        
+                        <div class="info-section">
+                            <h4>🐾 Pet Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Breed:</span>
+                                    <span class="info-value">Persian Cat</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Gender:</span>
+                                    <span class="info-value">Female</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Age:</span>
+                                    <span class="info-value">1.5 years</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Weight:</span>
+                                    <span class="info-value">4.2 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>👤 Owner Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Previous Owner:</span>
+                                    <span class="info-value">Michael Chen</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Reason:</span>
+                                    <span class="info-value">Allergies developed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📞 Contact</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Shelter:</span>
+                                    <span class="info-value">Whiskers & Tails</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Phone:</span>
+                                    <span class="info-value">+1 (555) 987-6543</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📍 Location</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">City:</span>
+                                    <span class="info-value">Oakland, CA</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Distance:</span>
+                                    <span class="info-value">8.7 miles away</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>💉 Vaccination Report</h4>
+                            <div class="vaccination-status">
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>FVRCP (2024)</span>
+                                </div>
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>Rabies (2024)</span>
+                                </div>
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>FeLV (2024)</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <span class="vaccine-icon">🩺</span>
+                                    <span>Health Check: Perfect</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="more-info-btn" onclick="showContactModal('Luna', 'Persian Cat')">
+                            💌 More Info & Contact
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pet 3 - Labrador -->
+                <div class="pet-card">
+                    <div class="pet-image">
+                        <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Labrador">
+                        <div class="pet-status available">Available</div>
+                    </div>
+                    
+                    <div class="pet-info">
+                        <h3 class="pet-name">Max 🐕</h3>
+                        
+                        <div class="info-section">
+                            <h4>🐾 Pet Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Breed:</span>
+                                    <span class="info-value">Labrador Mix</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Gender:</span>
+                                    <span class="info-value">Male</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Age:</span>
+                                    <span class="info-value">3 years</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Weight:</span>
+                                    <span class="info-value">32 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>👤 Owner Information</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Previous Owner:</span>
+                                    <span class="info-value">Rescue Center</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Reason:</span>
+                                    <span class="info-value">Found as stray</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📞 Contact</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">Shelter:</span>
+                                    <span class="info-value">Bay Area Animal Rescue</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Phone:</span>
+                                    <span class="info-value">+1 (555) 456-7890</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>📍 Location</h4>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="info-label">City:</span>
+                                    <span class="info-value">Berkeley, CA</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Distance:</span>
+                                    <span class="info-value">12.3 miles away</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>💉 Vaccination Report</h4>
+                            <div class="vaccination-status">
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>Rabies (2024)</span>
+                                </div>
+                                <div class="vaccine-item completed">
+                                    <span class="vaccine-icon">✅</span>
+                                    <span>DHPP (2024)</span>
+                                </div>
+                                <div class="vaccine-item pending">
+                                    <span class="vaccine-icon">⏳</span>
+                                    <span>Bordetella (Due Soon)</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <span class="vaccine-icon">🩺</span>
+                                    <span>Health Check: Good</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="more-info-btn" onclick="showContactModal('Max', 'Labrador Mix')">
+                            💌 More Info & Contact
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🐾 Contact Request Sent!</h2>
+                <span class="close" onclick="closeContactModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="checkmark">✅</div>
+                </div>
+                <h3 id="modalPetName">Pet Name</h3>
+                <p class="modal-message">
+                    Your query has been sent to our admin team! 📧
+                </p>
+                <p class="modal-submessage">
+                    We will connect you with the shelter shortly. You can expect a response within 24 hours.
+                </p>
+                <div class="modal-info">
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span>Emergency Contact: +1 (555) 000-PETS</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span>Email: adopt@pethealthcare.com</span>
+                    </div>
+                </div>
+                <button class="modal-btn" onclick="closeContactModal()">
+                    Got it! 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

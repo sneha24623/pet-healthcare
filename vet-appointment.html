@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Appointment - Pet Healthcare Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🏥 Vet Appointment Center</h2>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Features ▼</button>
+                    <div class="dropdown-content">
+                        <a href="adoption.html">🐕 Adoption</a>
+                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="#diet">🍖 Diet Planner</a>
+                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                    </div>
+                </div>
+                <button class="btn-nav" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="vet-main">
+        <div class="vet-container">
+            <div class="vet-header">
+                <h1 class="vet-title">🏥 Veterinary Care Center</h1>
+                <p class="vet-subtitle">Professional healthcare services for your beloved pets</p>
+            </div>
+
+            <div class="vet-tabs">
+                <button class="tab-btn active" onclick="showTab('schedule')">📅 Schedule Appointment</button>
+                <button class="tab-btn" onclick="showTab('view')">👁️ View Appointments</button>
+                <button class="tab-btn" onclick="showTab('emergency')">🚨 Emergency Info</button>
+            </div>
+
+            <!-- Schedule Appointment Section -->
+            <div id="schedule" class="tab-content active">
+                <div class="appointment-card">
+                    <div class="card-header">
+                        <h2>📅 Schedule New Appointment</h2>
+                        <p>Book a consultation with our expert veterinarians</p>
+                    </div>
+                    
+                    <form id="appointmentForm" class="appointment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="appointmentDate">📅 Appointment Date</label>
+                                <input type="date" id="appointmentDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointmentTime">⏰ Appointment Time</label>
+                                <input type="time" id="appointmentTime" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="doctorName">👨‍⚕️ Doctor Name</label>
+                                <select id="doctorName" required>
+                                    <option value="">Select Doctor</option>
+                                    <option value="Dr. Sarah Johnson">Dr. Sarah Johnson - Small Animals</option>
+                                    <option value="Dr. Michael Chen">Dr. Michael Chen - Surgery Specialist</option>
+                                    <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez - Emergency Care</option>
+                                    <option value="Dr. David Wilson">Dr. David Wilson - Exotic Pets</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hospitalName">🏥 Hospital Name</label>
+                                <select id="hospitalName" required>
+                                    <option value="">Select Hospital</option>
+                                    <option value="Happy Paws Veterinary Clinic">Happy Paws Veterinary Clinic</option>
+                                    <option value="Pet Care Medical Center">Pet Care Medical Center</option>
+                                    <option value="Animal Health Hospital">Animal Health Hospital</option>
+                                    <option value="Emergency Pet Clinic">Emergency Pet Clinic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="petInfo">🐾 Pet Information</label>
+                            <select id="petInfo" required>
+                                <option value="">Select Your Pet</option>
+                                <option value="Buddy - Golden Retriever - 2 years">Buddy - Golden Retriever - 2 years</option>
+                                <option value="Luna - Persian Cat - 1.5 years">Luna - Persian Cat - 1.5 years</option>
+                                <option value="Max - Labrador Mix - 3 years">Max - Labrador Mix - 3 years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentReason">📝 Reason for Visit</label>
+                            <textarea id="appointmentReason" placeholder="Describe the reason for your visit..." rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="schedule-btn">📅 Schedule Appointment</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- View Appointments Section -->
+            <div id="view" class="tab-content">
+                <div class="appointments-list">
+                    <div class="card-header">
+                        <h2>👁️ Your Appointments</h2>
+                        <p>View and manage your scheduled appointments</p>
+                    </div>
+
+                    <div class="appointment-item">
+                        <div class="appointment-status upcoming">Upcoming</div>
+                        <div class="appointment-details">
+                            <div class="appointment-info">
+                                <h3>🐕 Buddy - Routine Checkup</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-icon">📅</span>
+                                        <span>Date: March 15, 2024</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">⏰</span>
+                                        <span>Time: 2:30 PM</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">👨‍⚕️</span>
+                                        <span>Dr. Sarah Johnson</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">🏥</span>
+                                        <span>Happy Paws Veterinary Clinic</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="action-btn reschedule">📝 Reschedule</button>
+                                <button class="action-btn cancel">❌ Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appointment-item">
+                        <div class="appointment-status confirmed">Confirmed</div>
+                        <div class="appointment-details">
+                            <div class="appointment-info">
+                                <h3>🐱 Luna - Vaccination</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-icon">📅</span>
+                                        <span>Date: March 20, 2024</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">⏰</span>
+                                        <span>Time: 10:00 AM</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">👨‍⚕️</span>
+                                        <span>Dr. Michael Chen</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">🏥</span>
+                                        <span>Pet Care Medical Center</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="action-btn reschedule">📝 Reschedule</button>
+                                <button class="action-btn cancel">❌ Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appointment-item">
+                        <div class="appointment-status completed">Completed</div>
+                        <div class="appointment-details">
+                            <div class="appointment-info">
+                                <h3>🐕 Max - Surgery Follow-up</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-icon">📅</span>
+                                        <span>Date: March 10, 2024</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">⏰</span>
+                                        <span>Time: 3:00 PM</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">👨‍⚕️</span>
+                                        <span>Dr. Emily Rodriguez</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-icon">🏥</span>
+                                        <span>Animal Health Hospital</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-actions">
+                                <button class="action-btn view-report">📋 View Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Information Section -->
+            <div id="emergency" class="tab-content">
+                <div class="emergency-container">
+                    <div class="card-header emergency-header">
+                        <h2>🚨 Emergency Information</h2>
+                        <p>Quick access to emergency contacts and pet medical information</p>
+                    </div>
+
+                    <div class="emergency-grid">
+                        <div class="emergency-card owner-info">
+                            <h3>👤 Owner Information</h3>
+                            <div class="emergency-details">
+                                <div class="detail-item">
+                                    <span class="detail-icon">👤</span>
+                                    <div>
+                                        <strong>Owner Name:</strong>
+                                        <span>John Smith</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">📞</span>
+                                    <div>
+                                        <strong>Primary Contact:</strong>
+                                        <span>+1 (555) 123-4567</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-icon">📱</span>
+                                    <div>
+                                        <strong>Emergency Contact:</strong>
+                                        <span>+1 (555) 987-6543</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="emergency-card pet-medical">
+                            <h3>🐾 Pet Medical Information</h3>
+                            <div class="pet-medical-list">
+                                <div class="medical-item">
+                                    <h4>🐕 Buddy (Golden Retriever)</h4>
+                                    <ul>
+                                        <li>🩸 Blood Type: DEA 1.1 Positive</li>
+                                        <li>💊 Allergies: None known</li>
+                                        <li>💉 Last Vaccination: Feb 2024</li>
+                                        <li>🏥 Vet: Dr. Sarah Johnson</li>
+                                    </ul>
+                                </div>
+                                <div class="medical-item">
+                                    <h4>🐱 Luna (Persian Cat)</h4>
+                                    <ul>
+                                        <li>🩸 Blood Type: Type A</li>
+                                        <li>💊 Allergies: Chicken protein</li>
+                                        <li>💉 Last Vaccination: Jan 2024</li>
+                                        <li>🏥 Vet: Dr. Michael Chen</li>
+                                    </ul>
+                                </div>
+                                <div class="medical-item">
+                                    <h4>🐕 Max (Labrador Mix)</h4>
+                                    <ul>
+                                        <li>🩸 Blood Type: DEA 1.1 Negative</li>
+                                        <li>💊 Allergies: Flea medication</li>
+                                        <li>💉 Last Vaccination: Mar 2024</li>
+                                        <li>🏥 Vet: Dr. Emily Rodriguez</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="emergency-card helpline-info">
+                            <h3>📞 Emergency Helplines</h3>
+                            <div class="helpline-list">
+                                <div class="helpline-item">
+                                    <span class="helpline-icon">🏥</span>
+                                    <div>
+                                        <strong>24/7 Pet Emergency:</strong>
+                                        <span class="helpline-number">1-800-PET-HELP</span>
+                                    </div>
+                                </div>
+                                <div class="helpline-item">
+                                    <span class="helpline-icon">☠️</span>
+                                    <div>
+                                        <strong>Poison Control:</strong>
+                                        <span class="helpline-number">1-888-426-4435</span>
+                                    </div>
+                                </div>
+                                <div class="helpline-item">
+                                    <span class="helpline-icon">🚑</span>
+                                    <div>
+                                        <strong>Animal Ambulance:</strong>
+                                        <span class="helpline-number">1-800-VET-RIDE</span>
+                                    </div>
+                                </div>
+                                <div class="helpline-item">
+                                    <span class="helpline-icon">🏥</span>
+                                    <div>
+                                        <strong>Nearest Emergency Clinic:</strong>
+                                        <span class="helpline-number">+1 (555) 911-PETS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sos-section">
+                        <button class="sos-btn" onclick="triggerSOS()">
+                            <span class="sos-icon">🚨</span>
+                            <span class="sos-text">SOS EMERGENCY</span>
+                            <span class="sos-subtext">Tap for Urgent Help</span>
+                        </button>
+                        <p class="sos-description">
+                            Press the SOS button in case of a life-threatening emergency. 
+                            This will immediately connect you to emergency services and notify your registered contacts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Appointment Success Modal -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✅ Appointment Scheduled!</h2>
+                <span class="close" onclick="closeAppointmentModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="checkmark">✅</div>
+                </div>
+                <h3 id="modalAppointmentDetails">Appointment Details</h3>
+                <p class="modal-message">
+                    Your appointment has been successfully scheduled! 📅
+                </p>
+                <p class="modal-submessage">
+                    You will receive a confirmation email and SMS reminder 24 hours before your appointment.
+                </p>
+                <div class="modal-info">
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span>Confirmation sent to your email</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📱</span>
+                        <span>SMS reminder will be sent</span>
+                    </div>
+                </div>
+                <button class="modal-btn" onclick="closeAppointmentModal()">
+                    Perfect! 🎉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOS Emergency Modal -->
+    <div id="sosModal" class="modal">
+        <div class="modal-content emergency-modal">
+            <div class="modal-header emergency-modal-header">
+                <h2>🚨 EMERGENCY ACTIVATED</h2>
+            </div>
+            <div class="modal-body">
+                <div class="emergency-animation">
+                    <div class="emergency-pulse">🚨</div>
+                </div>
+                <h3>Emergency Services Contacted</h3>
+                <p class="modal-message emergency-message">
+                    🚑 Emergency services have been notified!
+                </p>
+                <p class="modal-submessage">
+                    • Emergency veterinary services contacted<br>
+                    • Your emergency contacts have been notified<br>
+                    • Location shared with emergency responders
+                </p>
+                <div class="emergency-countdown">
+                    <span>Help is on the way...</span>
+                    <div class="countdown-timer" id="countdownTimer">Connecting...</div>
+                </div>
+                <button class="modal-btn emergency-btn" onclick="closeSosModal()">
+                    I'm Safe Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
