@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Health Dashboard - Pet Healthcare Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav class="navbar">
@@ -14,15 +14,15 @@
             </div>
             
             <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="{{ url_for('render_page', page_name='home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('render_page', page_name='dashboard') }}" class="nav-link">Dashboard</a>
                 <div class="dropdown">
                     <button class="dropdown-btn">Features ▼</button>
                     <div class="dropdown-content">
-                        <a href="adoption.html">🐕 Adoption</a>
-                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="{{ url_for('render_page', page_name='adoption') }}">🐕 Adoption</a>
+                        <a href="{{ url_for('render_page', page_name='vet-appointment') }}">🏥 Vet Appointment</a>
                         <a href="#diet">🍖 Diet Planner</a>
-                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                        <a href="{{ url_for('render_page', page_name='health-dashboard') }}">📊 Health Dashboard</a>
                     </div>
                 </div>
                 <button class="btn-nav" onclick="logout()">Logout</button>
@@ -37,17 +37,14 @@
                 <p class="health-subtitle">Comprehensive health monitoring and medical records for your beloved pets</p>
             </div>
 
-            <!-- Pet Selection Tabs -->
             <div class="pet-tabs">
                 <button class="pet-tab-btn active" onclick="showPetProfile('buddy')">🐕 Buddy</button>
                 <button class="pet-tab-btn" onclick="showPetProfile('luna')">🐱 Luna</button>
                 <button class="pet-tab-btn" onclick="showPetProfile('max')">🐕 Max</button>
             </div>
 
-            <!-- Buddy's Profile -->
             <div id="buddy" class="pet-profile active">
                 <div class="pet-profile-card">
-                    <!-- Pet Header Section -->
                     <div class="pet-header-section">
                         <div class="pet-image-container">
                             <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Buddy" class="pet-profile-image">
@@ -89,7 +86,6 @@
                         </div>
                     </div>
 
-                    <!-- Health Metrics -->
                     <div class="health-metrics">
                         <h3 class="section-title">📈 Health Metrics</h3>
                         <div class="metrics-grid">
@@ -124,7 +120,6 @@
                         </div>
                     </div>
 
-                    <!-- Vaccination Reports -->
                     <div class="vaccination-section">
                         <h3 class="section-title">💉 Vaccination Reports</h3>
                         <div class="vaccination-grid">
@@ -175,7 +170,6 @@
                         </div>
                     </div>
 
-                    <!-- Check-up Schedule -->
                     <div class="checkup-section">
                         <h3 class="section-title">📅 Check-up Schedule</h3>
                         <div class="checkup-grid">
@@ -211,7 +205,6 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="action-buttons">
                         <button class="action-btn edit-btn" onclick="editPetProfile('buddy')">
                             ✏️ Edit Pet Profile
@@ -223,10 +216,8 @@
                 </div>
             </div>
 
-            <!-- Luna's Profile -->
             <div id="luna" class="pet-profile">
                 <div class="pet-profile-card">
-                    <!-- Pet Header Section -->
                     <div class="pet-header-section">
                         <div class="pet-image-container">
                             <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Luna" class="pet-profile-image">
@@ -268,7 +259,6 @@
                         </div>
                     </div>
 
-                    <!-- Health Metrics -->
                     <div class="health-metrics">
                         <h3 class="section-title">📈 Health Metrics</h3>
                         <div class="metrics-grid">
@@ -303,7 +293,6 @@
                         </div>
                     </div>
 
-                    <!-- Vaccination Reports -->
                     <div class="vaccination-section">
                         <h3 class="section-title">💉 Vaccination Reports</h3>
                         <div class="vaccination-grid">
@@ -354,7 +343,6 @@
                         </div>
                     </div>
 
-                    <!-- Check-up Schedule -->
                     <div class="checkup-section">
                         <h3 class="section-title">📅 Check-up Schedule</h3>
                         <div class="checkup-grid">
@@ -390,7 +378,6 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="action-buttons">
                         <button class="action-btn edit-btn" onclick="editPetProfile('luna')">
                             ✏️ Edit Pet Profile
@@ -402,10 +389,8 @@
                 </div>
             </div>
 
-            <!-- Max's Profile -->
             <div id="max" class="pet-profile">
                 <div class="pet-profile-card">
-                    <!-- Pet Header Section -->
                     <div class="pet-header-section">
                         <div class="pet-image-container">
                             <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Max" class="pet-profile-image">
@@ -447,7 +432,6 @@
                         </div>
                     </div>
 
-                    <!-- Health Metrics -->
                     <div class="health-metrics">
                         <h3 class="section-title">📈 Health Metrics</h3>
                         <div class="metrics-grid">
@@ -482,7 +466,6 @@
                         </div>
                     </div>
 
-                    <!-- Vaccination Reports -->
                     <div class="vaccination-section">
                         <h3 class="section-title">💉 Vaccination Reports</h3>
                         <div class="vaccination-grid">
@@ -533,7 +516,6 @@
                         </div>
                     </div>
 
-                    <!-- Check-up Schedule -->
                     <div class="checkup-section">
                         <h3 class="section-title">📅 Check-up Schedule</h3>
                         <div class="checkup-grid">
@@ -569,7 +551,6 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="action-buttons">
                         <button class="action-btn edit-btn" onclick="editPetProfile('max')">
                             ✏️ Edit Pet Profile
@@ -583,7 +564,6 @@
         </div>
     </main>
 
-    <!-- Edit Pet Modal -->
     <div id="editPetModal" class="modal">
         <div class="modal-content edit-modal">
             <div class="modal-header">
@@ -635,6 +615,6 @@
         </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
