@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Healthcare Management System - Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav class="navbar">
@@ -14,14 +14,14 @@
             </div>
             
             <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
+                <a href="{{ url_for('render_page', page_name='home') }}" class="nav-link">Home</a>
                 <div class="dropdown">
                     <button class="dropdown-btn">Features ▼</button>
                     <div class="dropdown-content">
-                        <a href="adoption.html">🐕 Adoption</a>
-                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="{{ url_for('render_page', page_name='adoption') }}">🐕 Adoption</a>
+                        <a href="{{ url_for('render_page', page_name='vet-appointment') }}">🏥 Vet Appointment</a>
                         <a href="#diet">🍖 Diet Planner</a>
-                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                        <a href="{{ url_for('render_page', page_name='health-dashboard') }}">📊 Health Dashboard</a>
                     </div>
                 </div>
                 <button class="btn-nav" onclick="logout()">Logout</button>
@@ -45,7 +45,7 @@
                         <span class="stat-number">3</span>
                         <span class="stat-label">Registered Pets</span>
                     </div>
-                    <button class="card-btn" onclick="window.location.href='health-dashboard.html'">View Pets</button>
+                    <a href="{{ url_for('render_page', page_name='health-dashboard') }}" class="card-btn">View Pets</a>
                 </div>
 
                 <div class="dashboard-card">
@@ -56,8 +56,7 @@
                         <span class="stat-number">2</span>
                         <span class="stat-label">Upcoming</span>
                     </div>
-                    <button class="card-btn" onclick="window.location.href='vet-appointment.html'">Book Now</button>
-                </div>
+                    <a href="{{ url_for('render_page', page_name='vet-appointment') }}" class="card-btn">Book Now</a>
 
                 <div class="dashboard-card">
                     <div class="card-icon">💊</div>
@@ -89,7 +88,7 @@
                         <span class="stat-number">25</span>
                         <span class="stat-label">Available Pets</span>
                     </div>
-                    <button class="card-btn" onclick="window.location.href='adoption.html'">Browse Pets</button>
+                    <a href="{{ url_for('render_page', page_name='adoption') }}" class="card-btn">Browse Pets</a>
                 </div>
 
                 <div class="dashboard-card">
@@ -115,7 +114,6 @@
         </div>
     </main>
 
-    <!-- Emergency Contact Modal -->
     <div id="emergencyContactModal" class="modal">
         <div class="modal-content emergency-modal">
             <div class="modal-header emergency-modal-header">
@@ -208,7 +206,6 @@
         </div>
     </div>
 
-    <!-- Set Reminder Modal -->
     <div id="setReminderModal" class="modal">
         <div class="modal-content reminder-modal">
             <div class="modal-header">
@@ -280,7 +277,6 @@
         </div>
     </div>
 
-    <!-- Add New Pet Modal -->
     <div id="addNewPetModal" class="modal">
         <div class="modal-content add-pet-modal">
             <div class="modal-header">
@@ -393,7 +389,6 @@
         </div>
     </div>
 
-    <!-- Reminder Success Modal -->
     <div id="reminderSuccessModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -428,7 +423,6 @@
         </div>
     </div>
 
-    <!-- Add Pet Success Modal -->
     <div id="addPetSuccessModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -463,7 +457,6 @@
         </div>
     </div>
 
-    <!-- SOS Emergency Modal -->
     <div id="sosModal" class="modal">
         <div class="modal-content emergency-modal">
             <div class="modal-header emergency-modal-header">
@@ -493,7 +486,6 @@
         </div>
     </div>
 
-    <!-- Diet Planner Modal -->
     <div id="dietPlannerModal" class="modal">
         <div class="modal-content diet-modal">
             <div class="modal-header">
@@ -546,6 +538,6 @@
             </div>
         </div>
     </div>
-    <script src="/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

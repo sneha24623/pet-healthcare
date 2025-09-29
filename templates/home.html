@@ -4,47 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Healthcare Management System - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <h2>Pet Healthcare Management System</h2>
+                <h2>🐾 PetCare System</h2>
             </div>
             
             <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
+                <a href="{{ url_for('render_page', page_name='home') }}" class="nav-link">Home</a>
+                
+                <a href="{{ url_for('render_page', page_name='dashboard') }}" class="nav-link">Dashboard</a>
+
                 <div class="dropdown">
                     <button class="dropdown-btn">Features ▼</button>
                     <div class="dropdown-content">
-                        <a href="#adoption">Adoption</a>
-                        <a href="vet-appointment.html">Vet Appointment</a>
-                        <a href="#diet" onclick="showDietPlannerFromHome()">Diet Planner</a>
-                        <a href="health-dashboard.html">Health Dashboard</a>
+                        <a href="{{ url_for('render_page', page_name='adoption') }}">🐕 Adoption</a>
+                        <a href="{{ url_for('render_page', page_name='vet-appointment') }}">🏥 Vet Appointment</a>
+                        <a href="{{ url_for('render_page', page_name='health-dashboard') }}">📊 Health Dashboard</a>
+                        <a href="#diet" onclick="showDietPlannerFromHome()">🍖 Diet Planner</a>
                     </div>
                 </div>
-                <button class="btn-nav" onclick="logout()">Get Started</button>
+                <a href="{{ url_for('index') }}" class="btn-nav">Get Started</a>
             </div>
         </div>
     </nav>
 
     <main class="hero-section">
         <div class="hero-content">
-            <h1 class="hero-title">Revolutionizing Pet Healthcare Management System</h1>
-            <h2 class="hero-subtitle">With AI-Powered Solutions</h2>
+            <h1 class="hero-title">Revolutionizing Pet Healthcare Management</h1>
+            <h2 class="hero-subtitle">Smart, Personalized Care with AI-Powered Solutions</h2>
             <p class="hero-description">
-                Personalized care, real-time diagnostics, and expert advice for your furry friends.
+                Access personalized care plans, real-time diagnostics, and connect with expert veterinarians for your furry friends.
             </p>
             
             <div class="hero-buttons">
-                <button class="btn-primary hero-btn">Get Started for Free</button>
+                <a href="{{ url_for('index') }}" class="btn-primary hero-btn">Get Started for Free</a>
                 <button class="btn-outline hero-btn" onclick="showLearnMore()">Learn More</button>
             </div>
         </div>
     </main>
 
-    <!-- Learn More Section (Hidden by default) -->
     <div id="learnMoreSection" class="learn-more-section" style="display: none;">
         <div class="learn-more-container">
             <div class="learn-more-header">
@@ -53,7 +55,6 @@
                 <p class="learn-more-subtitle">Discover amazing facts about your furry friends and how AI is revolutionizing pet care</p>
             </div>
 
-            <!-- AI Pet Healthcare Section -->
             <div class="ai-healthcare-section">
                 <h2 class="section-title">🤖 AI-Powered Pet Healthcare</h2>
                 <div class="ai-features-grid">
@@ -80,7 +81,6 @@
                 </div>
             </div>
 
-            <!-- Pet Facts Section -->
             <h2 class="facts-title">🐾 Amazing Pet Facts</h2>
             <div class="facts-grid">
                 <div class="fact-card">
@@ -120,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- Benefits Section -->
             <div class="benefits-section">
                 <h2 class="section-title">✨ Why Choose Our Pet Healthcare System?</h2>
                 <div class="benefits-grid">
@@ -150,11 +149,11 @@
             <div class="cta-section">
                 <h2>Ready to Get Started?</h2>
                 <p>Join thousands of pet owners who trust our AI-powered healthcare system</p>
-                <button class="btn-primary hero-btn" onclick="getStarted()">Start Your Journey Today</button>
+                <a href="{{ url_for('index') }}" class="btn-primary hero-btn">Start Your Journey Today</a>
             </div>
         </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

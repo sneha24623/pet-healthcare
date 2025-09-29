@@ -2246,3 +2246,32 @@ body::after {
     transform: translateY(-3px);
     box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
 }
+
+
+/* --- NEW STYLES TO ADD TO styles.css --- */
+
+/* Overrides the default white label color for elements inside light backgrounds (modals/forms) */
+.form-group label {
+    /* Targets all labels within form groups */
+    color: #333 !important; /* Dark text for high contrast on light input backgrounds */
+    font-weight: 600;
+}
+
+/* Ensure the text color within the input fields is dark, especially in modals/forms */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    color: #333; /* Ensures entered text is black/dark grey */
+    background: #fff; /* Ensures background is pure white */
+}
+
+/* Specific fix for the edit modal which might have conflicting dark label styles */
+.edit-form .form-group label {
+    color: #333 !important;
+}
+
+/* Optional: Fix placeholder text inside all form inputs to be dark/gray */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888;
+}

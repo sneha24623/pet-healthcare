@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Adoption - Pet Healthcare Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav class="navbar">
@@ -14,15 +14,15 @@
             </div>
             
             <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="{{ url_for('render_page', page_name='home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('render_page', page_name='dashboard') }}" class="nav-link">Dashboard</a>
                 <div class="dropdown">
                     <button class="dropdown-btn">Features ▼</button>
                     <div class="dropdown-content">
-                        <a href="adoption.html">🐕 Adoption</a>
-                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="{{ url_for('render_page', page_name='adoption') }}">🐕 Adoption</a>
+                        <a href="{{ url_for('render_page', page_name='vet-appointment') }}">🏥 Vet Appointment</a>
                         <a href="#diet">🍖 Diet Planner</a>
-                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                        <a href="{{ url_for('render_page', page_name='health-dashboard') }}">📊 Health Dashboard</a>
                     </div>
                 </div>
                 <button class="btn-nav" onclick="logout()">Logout</button>
@@ -35,10 +35,13 @@
             <div class="adoption-header">
                 <h1 class="adoption-title">Find Your Perfect Companion 🐾</h1>
                 <p class="adoption-subtitle">Give a loving home to these adorable pets waiting for their forever family</p>
+                
+                <button class="btn-primary" style="margin-top: 20px;" onclick="showAdoptionRegisterModal()">
+                    ➕ Register Your Pet for Adoption
+                </button>
             </div>
 
             <div class="pets-grid">
-                <!-- Pet 1 - Golden Retriever -->
                 <div class="pet-card">
                     <div class="pet-image">
                         <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Golden Retriever">
@@ -140,7 +143,6 @@
                     </div>
                 </div>
 
-                <!-- Pet 2 - Persian Cat -->
                 <div class="pet-card">
                     <div class="pet-image">
                         <img src="https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Persian Cat">
@@ -242,7 +244,6 @@
                     </div>
                 </div>
 
-                <!-- Pet 3 - Labrador -->
                 <div class="pet-card">
                     <div class="pet-image">
                         <img src="https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=1" alt="Labrador">
@@ -347,7 +348,6 @@
         </div>
     </main>
 
-    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -381,7 +381,81 @@
             </div>
         </div>
     </div>
+    
+    <div id="adoptionRegisterModal" class="modal">
+        <div class="modal-content add-pet-modal">
+            <div class="modal-header">
+                <h2>🐾 Register Pet for Adoption</h2>
+                <span class="close" onclick="closeAdoptionRegisterModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="adoptionRegisterForm" class="add-pet-form">
+                    <div class="form-section">
+                        <h3>Basic Pet Details</h3>
+                        <div class="form-group">
+                            <label for="adoptionPetName">Pet Name</label>
+                            <input type="text" id="adoptionPetName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptionPetBreed">Breed</label>
+                                <input type="text" id="adoptionPetBreed" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptionPetGender">Gender</label>
+                                <select id="adoptionPetGender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">♂️ Male</option>
+                                    <option value="Female">♀️ Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adoptionPetAge">Age (e.g., 2 years)</label>
+                                <input type="text" id="adoptionPetAge" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="adoptionShelter">Your Name/Shelter Name</label>
+                                <input type="text" id="adoptionShelter" placeholder="e.g., John Smith or Happy Paws" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="adoptionContact">Contact Phone</label>
+                            <input type="tel" id="adoptionContact" required>
+                        </div>
+                    </div>
 
-    <script src="/script.js"></script>
+                    <button type="submit" class="modal-btn save-btn">✅ Submit Pet for Listing</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="adoptionSuccessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎉 Registration Complete!</h2>
+                <span class="close" onclick="closeAdoptionSuccessModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="checkmark">🐾</div>
+                </div>
+                <h3 id="adoptionModalPetName">Pet Name</h3>
+                <p class="modal-message">
+                    Your pet has been successfully listed for adoption!
+                </p>
+                <p class="modal-submessage">
+                    It will appear in the listings shortly. We will contact you with potential matches.
+                </p>
+                <button class="modal-btn" onclick="closeAdoptionSuccessModal()">
+                    Great!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

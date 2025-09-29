@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vet Appointment - Pet Healthcare Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav class="navbar">
@@ -14,15 +14,15 @@
             </div>
             
             <div class="nav-menu">
-                <a href="home.html" class="nav-link">Home</a>
-                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="{{ url_for('render_page', page_name='home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('render_page', page_name='dashboard') }}" class="nav-link">Dashboard</a>
                 <div class="dropdown">
                     <button class="dropdown-btn">Features ▼</button>
                     <div class="dropdown-content">
-                        <a href="adoption.html">🐕 Adoption</a>
-                        <a href="vet-appointment.html">🏥 Vet Appointment</a>
+                        <a href="{{ url_for('render_page', page_name='adoption') }}">🐕 Adoption</a>
+                        <a href="{{ url_for('render_page', page_name='vet-appointment') }}">🏥 Vet Appointment</a>
                         <a href="#diet">🍖 Diet Planner</a>
-                        <a href="health-dashboard.html">📊 Health Dashboard</a>
+                        <a href="{{ url_for('render_page', page_name='health-dashboard') }}">📊 Health Dashboard</a>
                     </div>
                 </div>
                 <button class="btn-nav" onclick="logout()">Logout</button>
@@ -43,7 +43,6 @@
                 <button class="tab-btn" onclick="showTab('emergency')">🚨 Emergency Info</button>
             </div>
 
-            <!-- Schedule Appointment Section -->
             <div id="schedule" class="tab-content active">
                 <div class="appointment-card">
                     <div class="card-header">
@@ -106,7 +105,6 @@
                 </div>
             </div>
 
-            <!-- View Appointments Section -->
             <div id="view" class="tab-content">
                 <div class="appointments-list">
                     <div class="card-header">
@@ -114,35 +112,13 @@
                         <p>View and manage your scheduled appointments</p>
                     </div>
 
-                    <div class="appointment-item">
-                        <div class="appointment-status upcoming">Upcoming</div>
-                        <div class="appointment-details">
-                            <div class="appointment-info">
-                                <h3>🐕 Buddy - Routine Checkup</h3>
-                                <div class="info-grid">
-                                    <div class="info-item">
-                                        <span class="info-icon">📅</span>
-                                        <span>Date: March 15, 2024</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">⏰</span>
-                                        <span>Time: 2:30 PM</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">👨‍⚕️</span>
-                                        <span>Dr. Sarah Johnson</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <span class="info-icon">🏥</span>
-                                        <span>Happy Paws Veterinary Clinic</span>
-                                    </div>
-                                </div>
+                    <div id="view" class="tab-content">
+                        <div class="appointments-list">
+                            <div class="card-header">
+                                <h2>👁️ Your Appointments</h2>
+                                <p>View and manage your scheduled appointments</p>
                             </div>
-                            <div class="appointment-actions">
-                                <button class="action-btn reschedule">📝 Reschedule</button>
-                                <button class="action-btn cancel">❌ Cancel</button>
                             </div>
-                        </div>
                     </div>
 
                     <div class="appointment-item">
@@ -208,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- Emergency Information Section -->
             <div id="emergency" class="tab-content">
                 <div class="emergency-container">
                     <div class="card-header emergency-header">
@@ -328,7 +303,6 @@
         </div>
     </main>
 
-    <!-- Appointment Success Modal -->
     <div id="appointmentModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -363,7 +337,6 @@
         </div>
     </div>
 
-    <!-- SOS Emergency Modal -->
     <div id="sosModal" class="modal">
         <div class="modal-content emergency-modal">
             <div class="modal-header emergency-modal-header">
@@ -393,6 +366,6 @@
         </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

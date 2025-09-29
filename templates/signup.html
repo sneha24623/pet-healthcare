@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Healthcare Management System - Sign Up</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
@@ -50,12 +50,14 @@
                 <button type="submit" class="btn-primary">Sign Up</button>
                 
                 <div class="login-link">
-                    <p>Already have an account? <a href="index.html">Login here</a></p>
+                    <p>Already have an account? 
+                        <a href="{{ url_for('index') }}">Login here</a>
+                    </p>
                 </div>
             </form>
         </div>
     </div>
     
-    <script src="/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
